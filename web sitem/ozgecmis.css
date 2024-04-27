@@ -1,0 +1,38 @@
+h1 {
+    text-align: center; 
+}
+
+.row {
+    margin-top: 40px; /* Satırlar arasında boşluk bırakır */
+}
+
+.col-lg-6 {
+    padding: 20px; /* Sütunlarda iç boşluk bırakır */
+    background-color: #f8f9fa; /* Sütunların arka plan rengini belirler */
+    border-radius: 5px; /* Sütunlara yuvarlak köşe ekler */
+    margin-bottom: 20px; /* Sütunların altında boşluk bırakır */
+   
+}
+
+@media (max-width: 768px) {
+    .col-lg-6 {
+        width: 100%; /* Küçük ekranlarda sütunların genişliğini ayarlar */
+    }
+}
+body {
+    background-image: url(img/forest-3622519_1920.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0; /* Alt ve üst boşlukları kaldırır */
+    padding: 0; /* Kenar boşluklarını kaldırır */
+     
+    
+}
+.container {
+    min-height: 50vh; /* Ekran yüksekliğinin yarısı kadar alan kaplar */
+}
+
+
+
+

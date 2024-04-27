@@ -21,8 +21,13 @@ h3{
     color: black;
    
 }
-body{
-    background-image:url(img/forest-3622519_1920.jpg);
+body {
+    background-image: url(img/forest-3622519_1920.jpg);
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0; /* Alt ve üst boşlukları kaldırır */
+    padding: 0; /* Kenar boşluklarını kaldırır */
+    height: 100vh; /* Ekran yüksekliği kadar alan kaplar */
     
 }
