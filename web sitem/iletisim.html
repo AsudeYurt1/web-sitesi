@@ -9,6 +9,71 @@
     <title>İletişim</title>
 </head>
 <body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('formGiris');
+
+        form.addEventListener('submit', function(event) {
+            if (!validateForm()) {
+                event.preventDefault();
+            }
+        });
+
+        document.getElementById('clear-button').addEventListener('click', function() {
+            form.reset();
+        });
+    });
+
+    function validateForm() {
+        let isValid = true;
+
+        // Ad kontrolü
+        const name = document.getElementById('name').value;
+        if (!/^[a-zA-Z\s]+$/.test(name)) {
+            alert("Lütfen sadece harflerden oluşan geçerli bir ad giriniz.");
+            isValid = false;
+        }
+
+        // E-posta kontrolü
+        const email = document.getElementById('email').value;
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        if (!emailPattern.test(email)) {
+            alert("Lütfen geçerli bir e-posta adresi giriniz.");
+            isValid = false;
+        }
+
+        // Telefon kontrolü
+        const phone = document.getElementById('phone').value;
+        const phonePattern = /^05\d{9}$/;
+        if (!phonePattern.test(phone)) {
+            alert("Lütfen geçerli bir telefon numarası giriniz (05 ile başlamalı ve 11 haneli olmalıdır).");
+            isValid = false;
+        }
+
+        // Cinsiyet kontrolü
+        const gender = document.querySelector('input[name="gender"]:checked');
+        if (!gender) {
+            alert("Lütfen cinsiyetinizi seçiniz.");
+            isValid = false;
+        }
+
+        // Mesaj kontrolü
+        const message = document.querySelector('textarea[name="message"]').value;
+        if (message.trim() === "") {
+            alert("Lütfen bir mesaj giriniz.");
+            isValid = false;
+        }
+
+        // Onay kutusu kontrolü
+        const confirm = document.getElementById('confirm').checked;
+        if (!confirm) {
+            alert("Lütfen tüm şartları okuduğunuzu onaylayınız.");
+            isValid = false;
+        }
+
+        return isValid;
+    }
+</script>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">Ana Sayfa</a>
@@ -17,8 +82,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link" href="iletisim.html" target="_blank">İletişim</a>
-              <a class="nav-link" href="hakkımda.html" target="blank">Hakkında</a>
+              <a class="nav-link" href="iletisim.html" >İletişim</a>
+              <a class="nav-link" href="hakkımda.html" >Hakkında</a>
               <a class="nav-link" href="ozgecmis.html" >Özgeçmiş</a>
               <a class="nav-link" href="şehrim.html">Şehrim</a>
               <a class="nav-link" href ="mirasımız.html">Mirasımız</a>

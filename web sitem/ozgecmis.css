@@ -3,7 +3,7 @@ h1 {
 }
 
 .row {
-    margin-top: 40px; /* Satırlar arasında boşluk bırakır */
+    margin-top: 40px; 
 }
 a{
 
@@ -11,10 +11,10 @@ a{
     font-size: larger;
 }
 .col-lg-6 {
-    padding: 20px; /* Sütunlarda iç boşluk bırakır */
-    background-color: #f8f9fa; /* Sütunların arka plan rengini belirler */
-    border-radius: 5px; /* Sütunlara yuvarlak köşe ekler */
-    margin-bottom: 20px; /* Sütunların altında boşluk bırakır */
+    padding: 20px; 
+    background-color: #f8f9fa; 
+    border-radius: 5px; 
+    margin-bottom: 20px; 
    
 }
 
@@ -34,7 +34,7 @@ body {
     
 }
 .container {
-    min-height: 50vh; /* Ekran yüksekliğinin yarısı kadar alan kaplar */
+    min-height: 50vh; 
 }
 
 
