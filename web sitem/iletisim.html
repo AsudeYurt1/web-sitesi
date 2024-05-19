@@ -9,136 +9,122 @@
     <title>İletişim</title>
 </head>
 <body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById('formGiris');
-
-        form.addEventListener('submit', function(event) {
-            if (!validateForm()) {
-                event.preventDefault();
-            }
-        });
-
-        document.getElementById('clear-button').addEventListener('click', function() {
-            form.reset();
-        });
-    });
-
-    function validateForm() {
-        let isValid = true;
-
-        // Ad kontrolü
-        const name = document.getElementById('name').value;
-        if (!/^[a-zA-Z\s]+$/.test(name)) {
-            alert("Lütfen sadece harflerden oluşan geçerli bir ad giriniz.");
-            isValid = false;
-        }
-
-        // E-posta kontrolü
-        const email = document.getElementById('email').value;
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-        if (!emailPattern.test(email)) {
-            alert("Lütfen geçerli bir e-posta adresi giriniz.");
-            isValid = false;
-        }
-
-        // Telefon kontrolü
-        const phone = document.getElementById('phone').value;
-        const phonePattern = /^05\d{9}$/;
-        if (!phonePattern.test(phone)) {
-            alert("Lütfen geçerli bir telefon numarası giriniz (05 ile başlamalı ve 11 haneli olmalıdır).");
-            isValid = false;
-        }
-
-        // Cinsiyet kontrolü
-        const gender = document.querySelector('input[name="gender"]:checked');
-        if (!gender) {
-            alert("Lütfen cinsiyetinizi seçiniz.");
-            isValid = false;
-        }
-
-        // Mesaj kontrolü
-        const message = document.querySelector('textarea[name="message"]').value;
-        if (message.trim() === "") {
-            alert("Lütfen bir mesaj giriniz.");
-            isValid = false;
-        }
-
-        // Onay kutusu kontrolü
-        const confirm = document.getElementById('confirm').checked;
-        if (!confirm) {
-            alert("Lütfen tüm şartları okuduğunuzu onaylayınız.");
-            isValid = false;
-        }
-
-        return isValid;
-    }
-</script>
+  
+ <div id="app">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">Ana Sayfa</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="iletisim.html" >İletişim</a>
-              <a class="nav-link" href="hakkımda.html" >Hakkında</a>
-              <a class="nav-link" href="ozgecmis.html" >Özgeçmiş</a>
-              <a class="nav-link" href="şehrim.html">Şehrim</a>
-              <a class="nav-link" href ="mirasımız.html">Mirasımız</a>
-              <a class="nav-link" href="ilgialanı.html">İlgi alanlarım</a>
-              <a class="nav-link" href="login.html" target="_blank"><button>login</button> </a>
+            <a class="navbar-brand" href="index.html">Ana Sayfa</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" href="iletisim.html" >İletişim</a>
+                    <a class="nav-link" href="hakkımda.html" >Hakkında</a>
+                    <a class="nav-link" href="ozgecmis.html" >Özgeçmiş</a>
+                    <a class="nav-link" href="şehrim.html">Şehrim</a>
+                    <a class="nav-link" href ="mirasımız.html">Mirasımız</a>
+                    <a class="nav-link" href="ilgialanı.html">İlgi alanlarım</a>
+                    <a class="nav-link" href="login.html" target="_blank"><button>login</button> </a>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
-             <h3>İletişim Formu</h3>
-      <form action="" id="formGiris">
-       <table>
+    </nav>
+    <h3>İletişim Formu</h3>
+    <form @submit.prevent="submitForm">
+        <table>
+            <tr>
+                <td><label for="name">Adınız:</label></td>
+                <td> <input type="text" id="name" v-model="formData.name" name="first-name" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">E-posta Adresiniz:</label></td>
+                <td>  <input type="email" id="email" v-model="formData.email" name="email" placeholder="ornek.@gmail.com" required></td>
+            </tr>
+            <tr>
+                <td> <label for="phone">Telefon:</label></td>
+                <td>  <input type="tel" id="phone" v-model="formData.phone" name="phone" placeholder="05__" required></td>
+            </tr>
+            <tr>
+                <td><label>Cinsiyet:</label></td>
+            </tr>
+            <tr>
+                <td>  <label for="male">Erkek</label> <input type="radio" id="male" v-model="formData.gender" name="gender" value="male" required ></td>
+                <td><label for="female">Kadın</label><input type="radio" id="female" v-model="formData.gender" name="gender" value="female" required> </td>
+            </tr>
+            <tr>
+                <td> <label for="message">Mesajınız:</label></td>
+                <td><textarea type="message" name="message" v-model="formData.message" rows="4" required></textarea> </td>
+            </tr>
+            <tr>
+                <td> <label for="file">Dosya Yükle:</label></td>
+                <td><input type="file" id="file" v-model="formData.file" name="file"></td>
+            </tr>
+            <tr>
+                <td> <input type="checkbox" id="confirm" v-model="formData.confirm" name="confirm" required><label for="confirm">Hepsini Okudum:</label> </td>
+                <td> </td>
+            </tr>
+        </table><br>
+        <button @click="validateAndSubmitForm" class="btn btn-primary">Gönder</button>
+        <button id="clear-button" type="button" @click="clearForm" class="btn btn-secondary">Temizle</button>
+    </form>
+</div>
 
-        <tr>
-            <td><label for="name">Adınız:</label></td>
-            <td> <input type="text" id="name" name="first-name" required></td>
-        </tr>
-        <tr>
-            <td><label for="email">E-posta Adresiniz:</label></td>
-            <td>  <input type="email" id="email" name="email"placeholder="ornek.@gmail.com" required></td>
-        </tr>
-         <tr>
-            <td> <label for="phone">Telefon:</label></td>
-               
-            <td>  <input type="tel" id="phone" name="phone" placeholder="05__" required></td>
-         </tr>
-       <tr>
-        <td><label>Cinsiyet:</label></td>
-       </tr>
-         <tr>
-          
-        <td>  <label for="male">Erkek</label> <input type="radio" id="male" name="gender" value="male" required </td>
-        <td><label for="female">Kadın</label><input type="radio" id="female" name="gender" value="female" required> </td>
-      
-       </tr>
-         <tr>
-            <td> <label for="message">Mesajınız:</label>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            formData: {
+                name: '',
+                email: '',
+                phone: '',
+                gender: '',
+                message: '',
+                file: '',
+                confirm: false
+            }
+        },
+        methods: {
+            submitForm() {
                 
-        </td>
-            <td><textarea type="message" name="message" rows="4" required></textarea> </td>
-        </tr>
-       <tr>
-        <td> <label for="file">Dosya Yükle:</label></td>
-        <td><input type="file" id="file" name="file"></td>
-       </tr>
-       
-        <tr>
-        <td> <input type="checkbox" id="confirm" name="confirm" required><label for="confirm">Hepsini Okudum:</label> </td>
-        <td> </td>
-       </tr>
-    </table><br>
-       
-       <input type="submit" value="Gönder">
-       <button id="clear-button" type="button">Temizle</button>
-
-      </form>
+                console.log('Form gönderildi:', this.formData);
+            
+            },
+            clearForm() {
+                // Formu temizlemek için
+                this.formData = {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    gender: '',
+                    message: '',
+                    file: '',
+                    confirm: false
+                };
+            },
+            validateAndSubmitForm() {
+                // Form doğrulama işlemleri
+                if (!this.formData.name.match(/^[a-zA-Z\s]+$/)) {
+                    alert("Lütfen sadece harflerden oluşan geçerli bir ad giriniz.");
+                } else if (!this.formData.email.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)) {
+                    alert("Lütfen geçerli bir e-posta adresi giriniz.");
+                } else if (!this.formData.phone.match(/^05\d{9}$/)) {
+                    alert("Lütfen geçerli bir telefon numarası giriniz (05 ile başlamalı ve 11 haneli olmalıdır).");
+                } else if (!this.formData.gender) {
+                    alert("Lütfen cinsiyetinizi seçiniz.");
+                } else if (this.formData.message.trim() === "") {
+                    alert("Lütfen bir mesaj giriniz.");
+                } else if (!this.formData.confirm) {
+                    alert("Lütfen tüm şartları okuduğunuzu onaylayınız.");
+                } else {
+                    
+                    this.submitForm();
+                }
+            }
+        }
+    });
+</script>
+         
 </body>
 </html>

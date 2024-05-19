@@ -9,53 +9,29 @@ a{
     font-size: larger;
 }
 
-/*body{
-    background-image:url(img/forest-3622519_1920.jpg);
-    background-size: cover;
-   
-    
-   
-}
-
-/*img.img-fluid {
-    width: 100%;
-    height: auto;
-
-}*/
 
 body {
     background-image: url(img/forest-3622519_1920.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 0; /* Alt ve üst boşlukları kaldırır */
-    padding: 0; /* Kenar boşluklarını kaldırır */
-    height: 100vh; /* Ekran yüksekliği kadar alan kaplar */
+    margin: 0; 
+    padding: 0; 
+    height: 100vh; 
     
 }
 
-
-
-
-/*h1{
-    
-    left: 450px;
-    top: 300px;
-    position: absolute;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
-
-}*/
 h1 {
-    font-size: 3em; /* Başlık font boyutu */
-    text-align: center; /* Başlık metnini yatayda merkeze hizalar */
-    position: absolute; /* Mutlak konumlandırma */
-    bottom: 300px; /* Alt kenara olan mesafe */
-    left: 50%; /* Sol kenara göre yatayda merkeze hizalar */
-    transform: translateX(-50%); /* Yatayda merkezlemek için */
+    font-size: 3em; 
+    text-align: center; 
+    position: absolute; 
+    bottom: 300px; 
+    left: 50%; 
+    transform: translateX(-50%); 
 }
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2em; /* Küçük ekranlarda başlık font boyutunu küçültür */
+        font-size: 2em; 
     }
 }

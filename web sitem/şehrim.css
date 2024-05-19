@@ -38,8 +38,8 @@ h1 {
 }
 
 .carousel img {
-  height: auto; /* Resimlerin boyutunu orantılı şekilde ayarlar */
-  width: 100%; /* Resimlerin genişliğini slider genişliğine göre ayarlar */
+  height: auto; 
+  width: 100%; 
 }
 
 .carousel-indicators {
@@ -50,8 +50,8 @@ h1 {
 .carousel-control-next {
   width: auto; /* Yönlendirme düğmelerinin genişliğini otomatik olarak ayarlar */
   margin-top: -20px; /* Yönlendirme düğmelerini slider'ın üstüne yerleştirir */
-  background: none; /* Yönlendirme düğmelerinin arka planını kaldırır */
-  border: none; /* Yönlendirme düğmelerinin kenarlığını kaldırır */
+  background: none; 
+  border: none; 
 }
 
 .carousel-caption {
